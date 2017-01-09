@@ -6,7 +6,8 @@ import { ParallaxConfig } from '../../../ng2-parallax/system';
 })
 export class AppComponent {
     public parallaxConfig: ParallaxConfig = {
-        ratio: .4,
-        initialValue: -10
+        ratio: -.4,
+        initialValue: -10,
+        cssUnit: '%'
     }
 }

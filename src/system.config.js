@@ -24,10 +24,13 @@
       '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
       // other libraries
       'rxjs': 'npm:rxjs',
-      'ng2-parallax': 'ng2-parallax',
       'hammerjs': 'npm:hammerjs',
-    //   'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-      // 'ng2-parallax': 'ng2-parallax/dist/ts/parallax.directive.js'
+      
+      // These two lines allow you to switch out testing the npm package vs the dev version
+      // a couple folders up--the server should be able to deal with both.  Be sure to update
+      // the reference in app.module, or else unexpected behavior may happen
+      // 'ng2-parallax': 'npm:ng2-parallax',
+      'ng2-parallax': 'ng2-parallax',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

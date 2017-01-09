@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 	if (req.method == 'GET' || req.baseUrl.match(/\.[a-z]+$/i)) {
 		let filePath = __dirname;
 		
-		if (req.originalUrl.indexOf('/ng2-parallax') != -1) {
+		if (req.originalUrl.match(/^\/ng2-parallax/)) {
 			filePath += '/../..' + req.originalUrl;
 		} else if (req.originalUrl.indexOf('/node_modules') !== -1) {
 			filePath += '/..' + req.originalUrl;
@@ -27,15 +27,13 @@ app.use((req, res, next) => {
 			filePath += '/../dist' + req.originalUrl;
 		}
 		
-		try {
-			fs.accessSync(filePath, (<any> fs).F_OK);
-			console.log(chalk.bold.cyan(filePath + '\n'));
-		} catch (e) {
+		if (!fs.existsSync(filePath)) {
 			console.log(chalk.bold.red('Error! Could not find file at path', req.originalUrl));
 			console.log(chalk.bold.red('Tried to pull from ', filePath), '\n');
 			
 			return res.status(404).send('Could not find file at ' + req.originalUrl);
 		}
+		console.log(chalk.bold.cyan(filePath + '\n'));
 	}
 	
 	next();
