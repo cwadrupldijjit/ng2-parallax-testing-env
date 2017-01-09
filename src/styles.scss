@@ -1,0 +1,14 @@
+.example-1 {
+    background-image: url(/app/mountainous-landscape.jpg);
+    height: 600px;
+    width: 100%;
+    background-size: 100% auto;
+}
+
+.height-creator {
+    height: 150%;
+}
+
+router-outlet + * {
+    display: block;
+}

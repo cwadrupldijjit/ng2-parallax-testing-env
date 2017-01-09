@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
+import { ParallaxConfig } from '../../../ng2-parallax/system';
 @Component({
-  selector: 'my-app',
-  template: '<h1>My First Angular App</h1>'
+    selector: 'my-app',
+    templateUrl: '/app/app.template.html'
 })
-export class AppComponent { }
+export class AppComponent {
+    public parallaxConfig: ParallaxConfig = {
+        ratio: .4,
+        initialValue: -10
+    }
+}

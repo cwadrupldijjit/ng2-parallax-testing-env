@@ -21,8 +21,11 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
       // other libraries
       'rxjs': 'npm:rxjs',
+      'ng2-parallax': 'ng2-parallax',
+      'hammerjs': 'npm:hammerjs',
     //   'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       // 'ng2-parallax': 'ng2-parallax/dist/ts/parallax.directive.js'
     },
@@ -39,6 +42,14 @@
       //   main: './index.js',
       //   defaultExtension: 'js'
       // }
+      'ng2-parallax': {
+        main: './system.js',
+        defaultExtension: 'js'
+      },
+      hammerjs: {
+        main: './hammer.js',
+        defaultExtension: 'js'
+      }
     }
   });
 })(this);

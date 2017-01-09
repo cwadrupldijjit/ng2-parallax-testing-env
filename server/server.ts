@@ -17,19 +17,15 @@ app.use((req, res, next) => {
 	if (req.method == 'GET' || req.baseUrl.match(/\.[a-z]+$/i)) {
 		let filePath = __dirname;
 		
-		if (req.originalUrl.indexOf('/node_modules') !== -1)
+		if (req.originalUrl.indexOf('/ng2-parallax') != -1) {
+			filePath += '/../..' + req.originalUrl;
+		} else if (req.originalUrl.indexOf('/node_modules') !== -1) {
 			filePath += '/..' + req.originalUrl;
-		
-		/* tslint:disable */
-		else 
-		/* tslint:enable */
-		if (req.originalUrl.indexOf('/bower_components') !== -1)
-			filePath += '/..' + req.originalUrl;
-		
-		/* tslint:disable */
-		else 
-		/* tslint:enable */
+		} else if (req.originalUrl.indexOf('/bower_components') !== -1) {
+				filePath += '/..' + req.originalUrl;
+		} else {
 			filePath += '/../dist' + req.originalUrl;
+		}
 		
 		try {
 			fs.accessSync(filePath, (<any> fs).F_OK);
@@ -38,15 +34,16 @@ app.use((req, res, next) => {
 			console.log(chalk.bold.red('Error! Could not find file at path', req.originalUrl));
 			console.log(chalk.bold.red('Tried to pull from ', filePath), '\n');
 			
-			return res.status(404);
+			return res.status(404).send('Could not find file at ' + req.originalUrl);
 		}
 	}
 	
 	next();
 });
 
-app.use('/node_modules', express.static(__dirname + '/../node_modules'));
-app.use('/*', express.static(pathToPublic));
+app.use('/ng2-parallax', express.static(__dirname + '/../../ng2-parallax', {redirect: false}));
+app.use('/node_modules', express.static(__dirname + '/../node_modules', {redirect: false}));
+app.use('/', express.static(pathToPublic, {redirect: false}));
 
 // app.use('/system.config.js', (req, res) => { res.sendFile('system.config.js', {root: pathToPublic}) });
 app.all(/^\/$/, (req, res) => {
