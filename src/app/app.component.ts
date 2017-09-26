@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ParallaxConfig } from '../../../ng2-parallax/system';
+import { ParallaxConfig } from '../../../ng2-parallax/dist';
 @Component({
     selector: 'my-app',
     templateUrl: '/app/app.template.html'

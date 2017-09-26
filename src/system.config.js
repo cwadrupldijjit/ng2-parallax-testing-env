@@ -46,7 +46,7 @@
       //   defaultExtension: 'js'
       // }
       'ng2-parallax': {
-        main: './system.js',
+        main: './dist/index',
         defaultExtension: 'js'
       },
       hammerjs: {

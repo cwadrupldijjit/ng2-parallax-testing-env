@@ -8,7 +8,7 @@ import { ViewportRuler } from '@angular/material/core/overlay/position/viewport-
 // be testable and interchangeable.  Make sure to change the system config when you switch
 // or you may not see expected results from it.
 // import { Parallax } from 'ng2-parallax/system';
-import { Parallax } from '../../../ng2-parallax/system';
+import { ParallaxModule } from '../../../ng2-parallax/dist';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './routes/home/home.component';
@@ -19,11 +19,11 @@ import { RouteModule } from './routes/route.module';
     imports: [
         BrowserModule,
         RouteModule,
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+        ParallaxModule
     ],
     declarations: [ 
         AppComponent,
-        Parallax,
         HomeComponent
     ],
     bootstrap: [ AppComponent ]
